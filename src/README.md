@@ -1,24 +1,4 @@
-To run:
-
-javac com.package.package.Class.java
-
-java com.package.package.Class
-
-
-
-public interface Iterator<E> {
-    boolean hasNext();
-    E next();
-    void remove(); //optional
-}
-
-When to use Iterator?
-    - Remove the current element. For-each hides the iterator, so you cannot call remove.
-    - Iterate over multiple collections in parallel.
- 
----  
-
-## Generics
+# Generics
 
 #### Motivation Behind Generics
 
@@ -205,6 +185,16 @@ Cons: Not compatible with legacy code.
 
 ## Reflection & Lambdas
 
+#### Class Literals
+
+    Logger logger = injector.newInstance(Logger.class);
+
+
+#### What types are Reflectable?
+
+Types that are reified can be reflected.
+
+#### Reflecting Generics
 
 
 ## Advanced Topics

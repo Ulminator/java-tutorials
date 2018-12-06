@@ -16,6 +16,9 @@ public class LegacyCode {
         // Can still work! Will throw a ClassCastException if iterating over them.
         List<String> strings = list;
 
+//        When to use Iterator?
+//        - Remove the current element. For-each hides the iterator, so you cannot call remove.
+//        - Iterate over multiple collections in parallel.
         Iterator iterator = list.iterator();
         while (iterator.hasNext()) {
             final Object element = iterator.next();
