@@ -60,6 +60,8 @@ Using <T> allows T to be referenced in the return type, parameters, and code.
     
     
     List<? extends Cls>
+    
+    This is a list of items of the same datatype that extend from Cls.
 
 #### Lower Bound
 
@@ -193,11 +195,30 @@ Cons: Not compatible with legacy code.
 #### What types are Reflectable?
 
 Types that are reified can be reflected.
-
-#### Reflecting Generics
-
-
-## Advanced Topics
-
-
-Why can't you extend a final class?
+    
+    - Arrays ARE reifiable
+    
+        Integer[] myInts = {1,2,3,4};
+        Number[] myNumber = myInts;
+        myNumber[0] = 3.14; //attempt of heap pollution
+    
+    - At run time, Java knows that the array was instantiated as an array of integers
+    - This array happens to be accessed through a reference of type Number[]
+    
+    - Generics are NOT reifiable (Class.getClass() does not tell you anything useful)
+   
+        List<Integer> myInts = newArrayList<Integer>();
+        myInts.add(1);
+        myInts.add(2);
+        List<Number> myNums = myInts; //compiler error
+        myNums.add(3.14); //heap polution
+    
+    - Due to a erasure, this would work at runtime. The java compiler stops this however.
+    - At runtime, the true nature of the generic types are non determinable.
+    
+    Non Reifiable Types
+        - Type Variables (T)
+        - Parameterized Type with Parameters
+            - ArrayList<String>
+        - Parameterized Type with Bounds
+            - List<? extends Number>, Consumer<? super String>
